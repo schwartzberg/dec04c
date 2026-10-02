@@ -85,7 +85,7 @@
       0.6145454545454545
     ]
   },
-  "training_seconds": 94.78836299999966,
+  "training_seconds": 140.06842940000934,
   "trainable_parameters": 461221,
   "checkpoint": "first_kernel_5.pth",
   "test_evaluated": false

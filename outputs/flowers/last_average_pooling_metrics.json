@@ -85,7 +85,7 @@
       0.6018181818181818
     ]
   },
-  "training_seconds": 85.88610110001173,
+  "training_seconds": 133.91325209999923,
   "trainable_parameters": 460453,
   "checkpoint": "last_average_pooling.pth",
   "test_evaluated": false

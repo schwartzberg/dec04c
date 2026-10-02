@@ -85,7 +85,7 @@
       0.68
     ]
   },
-  "training_seconds": 101.17215919998125,
+  "training_seconds": 139.77854959998513,
   "trainable_parameters": 460453,
   "checkpoint": "leaky_relu.pth",
   "test_evaluated": false

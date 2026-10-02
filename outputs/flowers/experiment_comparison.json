@@ -265,7 +265,7 @@
         0.6436363636363637
       ]
     },
-    "training_seconds": 99.67273069999646,
+    "training_seconds": 137.69851170000038,
     "trainable_parameters": 460453,
     "checkpoint": "lower_learning_rate.pth",
     "test_evaluated": false
@@ -357,7 +357,7 @@
         0.68
       ]
     },
-    "training_seconds": 101.17215919998125,
+    "training_seconds": 139.77854959998513,
     "trainable_parameters": 460453,
     "checkpoint": "leaky_relu.pth",
     "test_evaluated": false
@@ -449,7 +449,7 @@
         0.6145454545454545
       ]
     },
-    "training_seconds": 94.78836299999966,
+    "training_seconds": 140.06842940000934,
     "trainable_parameters": 461221,
     "checkpoint": "first_kernel_5.pth",
     "test_evaluated": false
@@ -541,7 +541,7 @@
         0.6018181818181818
       ]
     },
-    "training_seconds": 85.88610110001173,
+    "training_seconds": 133.91325209999923,
     "trainable_parameters": 460453,
     "checkpoint": "last_average_pooling.pth",
     "test_evaluated": false

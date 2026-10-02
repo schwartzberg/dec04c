@@ -85,7 +85,7 @@
       0.6436363636363637
     ]
   },
-  "training_seconds": 99.67273069999646,
+  "training_seconds": 137.69851170000038,
   "trainable_parameters": 460453,
   "checkpoint": "lower_learning_rate.pth",
   "test_evaluated": false

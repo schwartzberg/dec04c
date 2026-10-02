@@ -1,0 +1,47 @@
+[
+  {
+    "image": "digit_0.png",
+    "true_digit": 0,
+    "predicted_digit": 0,
+    "model_score": 0.9582425951957703,
+    "correct": true,
+    "source": "user drawing in Paint",
+    "checkpoint": "outputs/mnist/mnist_cnn.pth"
+  },
+  {
+    "image": "digit_2.png",
+    "true_digit": 2,
+    "predicted_digit": 2,
+    "model_score": 0.991455078125,
+    "correct": true,
+    "source": "user drawing in Paint",
+    "checkpoint": "outputs/mnist/mnist_cnn.pth"
+  },
+  {
+    "image": "digit_5.png",
+    "true_digit": 5,
+    "predicted_digit": 5,
+    "model_score": 0.9980225563049316,
+    "correct": true,
+    "source": "user drawing in Paint",
+    "checkpoint": "outputs/mnist/mnist_cnn.pth"
+  },
+  {
+    "image": "digit_7.png",
+    "true_digit": 7,
+    "predicted_digit": 3,
+    "model_score": 0.667163074016571,
+    "correct": false,
+    "source": "user drawing in Paint",
+    "checkpoint": "outputs/mnist/mnist_cnn.pth"
+  },
+  {
+    "image": "digit_8.png",
+    "true_digit": 8,
+    "predicted_digit": 8,
+    "model_score": 0.9689714908599854,
+    "correct": true,
+    "source": "user drawing in Paint",
+    "checkpoint": "outputs/mnist/mnist_cnn.pth"
+  }
+]
