@@ -1,0 +1,14 @@
+{
+  "experiment": "first_kernel_5",
+  "config": {
+    "learning_rate": 0.001,
+    "activation": "relu",
+    "first_kernel": 5,
+    "last_pooling": "max"
+  },
+  "best_epoch": 14,
+  "selected_validation_loss": 0.8457092163779519,
+  "selected_validation_accuracy": 0.6727272727272727,
+  "selection_rule": "lowest validation loss among the five-block models",
+  "test_used_for_selection": false
+}

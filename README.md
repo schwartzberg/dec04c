@@ -1,31 +1,38 @@
 # CSCI E-89: Homework 4
 
-Work through the assignment in `e89-Schwartzberg-Paul-HW04.ipynb`, using the `cscie89` Jupyter kernel.
+Paul Schwartzberg
 
-## Progress
+## Status
 
-Problem 1, step 1: load MNIST through torchvision and inspect one image per digit.
-The model, training, evaluation and personal handwriting examples will follow.
+- Problem 1: MNIST loading and inspection complete. Model training and personal handwriting inference remain.
+- Problem 2: complete. The notebook contains the baseline, deeper model, four controlled trials, selection by validation loss, final test evaluation and conclusions.
+- Problem 3: not yet implemented. The selected flower checkpoint is ready for it.
 
-The starting point is the course notebook `1_pytorch_basic_cnn_digits.ipynb`.
+Use `e89-Schwartzberg-Paul-HW04.ipynb` with the `cscie89` kernel. The HTML file is a readable snapshot of the current notebook; the whole assignment is not yet complete.
+
+## Problem 2 results
+
+The selected five-block model uses a 5 x 5 first kernel, ReLU and max pooling, with three linear layers. It was selected at epoch 14 by validation loss (0.8457), with 67.27% validation accuracy. Final test accuracy is 69.15% on 551 images; test loss is 0.8353. No augmentation was used. The notebook discusses overfitting and the limits of one-seed comparisons.
 
 ## Run
 
-Open the notebook and run its cells in order. The first run downloads MNIST into `data/`, which Git ignores.
-`01_load_mnist.py` contains the same code as this first step. Run it from this folder with `python 01_load_mnist.py`.
+Run notebook cells in order. Training cells take several minutes on the CPU. Setup cells initialise fresh weights, so rerun each experiment's setup before repeating its training. Checkpoints on disk are separate from models in notebook memory.
 
-The assignment calls for one notebook covering all three problems and an HTML export. We will extend this notebook as we proceed.
+Script alternatives, run from this folder:
 
-## Problem 2
+1. `01_load_mnist.py`: load and inspect MNIST.
+2. `02_load_flowers.py`: download and inspect Flower Photos (about 220 MB).
+3. `03_flower_data_loaders.py`: create the fixed, stratified split and data loaders.
+4. `04_train_flower_baseline.py`: train and save the original model.
+5. `05_deeper_flower_model.py`: define the five-block model; importing it does not train it.
+6. `06_train_deeper_flowers.py`: run the deeper model under the baseline settings.
+7. `07_flower_experiments.py`: run four additional trials and select by validation loss.
+8. `08_evaluate_selected_flowers.py`: evaluate the fixed selected checkpoint on test images. Do not tune from these results.
 
-The notebook now loads and previews the Flower Photos dataset. `02_load_flowers.py` contains the same code for this step. The first run downloads about 220 MB. The baseline uses the course model with three convolutional blocks and two linear layers. The deeper-model experiments remain to be done.
+`flower_variants.py` reconstructs each variant from its saved configuration. The notebook also includes those definitions, so it contains the solution code in one place.
 
-The next cells create a fixed, stratified 70%/15%/15% split and batches of 64 images. `03_flower_data_loaders.py` contains this step as a script. Run it after downloading the photos.
+## Saved results
 
-The new baseline cells (2.5-2.7) train for 15 epochs with Adam and a learning rate of 0.001. They restore the weights with the lowest validation loss, plot learning curves and save weights, metrics and the exact split under `outputs/flowers/`. The test set is not evaluated during this step.
+`outputs/flowers/selected_flower_cnn.pth` is the checkpoint for Problem 3. It includes weights, configuration, class names and image size. `model_selection.json` records the selection rule. `split_manifest.json` records exact image assignments. Individual checkpoints, histories, comparison plots and final test metrics are also saved under `outputs/flowers/`.
 
-`04_train_flower_baseline.py` runs the same baseline outside Jupyter and reuses `03_flower_data_loaders.py`. Run it from this folder after downloading the photos. To repeat training in the notebook, rerun Section 2.5 first to reset the weights and optimiser, then run Sections 2.6 and 2.7.
-
-Sections 2.8-2.10 explain the baseline curves and define the required five-block, three-linear-layer model. `05_deeper_flower_model.py` provides the same model class. Shape and layer-count checks have passed. Sections 2.11-2.12 train this deeper model under the baseline settings and compare validation results. The test set remains reserved for final evaluation.
-
-`06_train_deeper_flowers.py` runs the same deeper-model experiment after the baseline outputs have been saved. It verifies the settings and exact split, resets the weights and batch order, and saves a separate checkpoint, metrics and comparison plot. To repeat this experiment in Jupyter, rerun the setup and training cells in Section 2.11, then Section 2.12.
+Downloaded datasets are kept in `data/`, which Git ignores. Required packages include PyTorch, torchvision, NumPy, matplotlib, scikit-learn, Pillow and Jupyter.
