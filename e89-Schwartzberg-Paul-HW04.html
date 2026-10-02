@@ -10535,7 +10535,7 @@ weighted avg       0.69      0.69      0.69       551
 <p><strong>Saved for Problem 3</strong></p>
 <p><code>outputs/flowers/selected_flower_cnn.pth</code> contains the selected weights, architecture configuration, class order, image size and selected epoch. <br/><code>build_flower_variant</code> reconstructs the matching architecture; it appears in this notebook and in <code>flower_variants.py</code>. <br/><code>split_manifest.json</code> records the exact image assignments. <br/>Training histories, experiment results and final test metrics are saved beside the checkpoint.</p>
 <p>For Problem 3, the last convolution is <code>flower_final_model.features[12]</code>. <br/>Its output before the final pooling stage has shape <code>(batch, 256, 4, 4)</code>, so a Grad-CAM heatmap from that layer will have coarse spatial resolution before being enlarged for display.</p>
-<p><strong>Progress:</strong> Problems 1 and 2 are complete. The following sections use the selected flower checkpoint for Problem 3.</p>
+<p>The following sections use the selected flower checkpoint for Problem 3.</p>
 </div>
 </div>
 </div>
@@ -10560,9 +10560,9 @@ weighted avg       0.69      0.69      0.69       551
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Problem-3:-inspect-the-selected-flower-CNN">Problem 3: inspect the selected flower CNN<a class="anchor-link" href="#Problem-3:-inspect-the-selected-flower-CNN">¶</a></h2><p>Adapted from <code>3_Visualizing_Flower_CNN_Filters_PyTorch.ipynb</code>. We load the final model from Problem 2, inspect a daisy through all five convolutional blocks, compare the last-block maps for roses and tulips, and generate Grad-CAM heatmaps. No model is trained here.</p>
-<h3 id="3.1-Restore-the-exact-architecture-and-select-images">3.1 Restore the exact architecture and select images<a class="anchor-link" href="#3.1-Restore-the-exact-architecture-and-select-images">¶</a></h3><p>The selected model has a 5 x 5 first kernel, five convolutional blocks and three linear layers. ReLU follows both hidden linear layers. Loading a different architecture would not reproduce the trained model. The checkpoint configuration reconstructs the architecture, and <code>load_state_dict</code> restores the learned weights.</p>
-<p>We use the same RGB resize and tensor conversion as training. For each flower type, we choose the first filename in its saved validation subset, independently of prediction or heatmap appearance. These are illustrative examples, not a new performance evaluation.</p>
+<h2 id="Problem-3:-inspect-the-selected-flower-CNN">Problem 3: inspect the selected flower CNN<a class="anchor-link" href="#Problem-3:-inspect-the-selected-flower-CNN">¶</a></h2><p>Adapted from <code>3_Visualizing_Flower_CNN_Filters_PyTorch.ipynb</code>.<br/> We load the final model from Problem 2, inspect a daisy through all five convolutional blocks, compare the last-block maps for roses and tulips, and generate Grad-CAM heatmaps. <br/>No model is trained here.</p>
+<h3 id="3.1-Restore-the-exact-architecture-and-select-images">3.1 Restore the exact architecture and select images<a class="anchor-link" href="#3.1-Restore-the-exact-architecture-and-select-images">¶</a></h3><p>The selected model has a 5 x 5 first kernel, five convolutional blocks and three linear layers. <br/>ReLU follows both hidden linear layers. Loading a different architecture would not reproduce the trained model. <br/>The checkpoint configuration reconstructs the architecture, and <code>load_state_dict</code> restores the learned weights.</p>
+<p>We use the same RGB resize and tensor conversion as training. <br/>For each flower type, we choose the first filename in its saved validation subset, independently of prediction or heatmap appearance. <br/>These are illustrative examples, not a new performance evaluation.</p>
 </div>
 </div>
 </div>
@@ -10571,7 +10571,7 @@ weighted avg       0.69      0.69      0.69       551
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [41]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
@@ -10671,8 +10671,8 @@ tulips: tulips/107693873_86021ac4ea_n.jpg | predicted tulips (54.3%)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="3.2-Inspect-actual-filter-weights">3.2 Inspect actual filter weights<a class="anchor-link" href="#3.2-Inspect-actual-filter-weights">¶</a></h3><p>A filter consists of learned weights, not an image or a feature map. The first convolution has weight shape <code>(16, 3, 5, 5)</code>: 16 filters, three input-channel slices per filter, and a 5 x 5 spatial kernel. Each filter combines all three slices to produce one output feature map, and has a separate bias.</p>
-<p>We show six filters' RGB slices with a common signed colour scale: blue is negative and red is positive. These colours encode numerical weights, not the colours of objects the filters detect. This compact plot avoids the enormous grids that would result from plotting every slice in the deeper layers.</p>
+<h3 id="3.2-Inspect-actual-filter-weights">3.2 Inspect actual filter weights<a class="anchor-link" href="#3.2-Inspect-actual-filter-weights">¶</a></h3><p>A filter consists of learned weights, not an image or a feature map. <br/><br/>The first convolution has weight shape <code>(16, 3, 5, 5)</code>: 16 filters, three input-channel slices per filter, and a 5 x 5 spatial kernel. <br/>Each filter combines all three slices to produce one output feature map, and has a separate bias.</p>
+<p>We show six filters' RGB slices with a common signed colour scale: blue is negative and red is positive. <br/>These colours encode numerical weights, not the colours of objects the filters detect.<br/>This compact plot avoids the enormous grids that would result from plotting every slice in the deeper layers.</p>
 </div>
 </div>
 </div>
@@ -10723,8 +10723,8 @@ tulips: tulips/107693873_86021ac4ea_n.jpg | predicted tulips (54.3%)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="3.3-Follow-a-daisy-through-all-five-blocks">3.3 Follow a daisy through all five blocks<a class="anchor-link" href="#3.3-Follow-a-daisy-through-all-five-blocks">¶</a></h3><p>We pass the same image through the loaded model and copy maps after each ReLU, before pooling. Their spatial sizes are 64, 32, 16, 8 and 4 pixels per side; channel counts are 16, 32, 64, 128 and 256. A check confirms that this walkthrough produces the same scores as the normal forward pass.</p>
-<p>Only the first eight channels per block are displayed, chosen consistently rather than by their apparent interpretability. Each daisy row has its own scale. A dark map can be a valid response. For roses and tulips, we compare the same eight last-block channels on one shared scale. These 4 x 4 maps are coarse responses, not outlines of petals or proof of a channel's meaning.</p>
+<h3 id="3.3-Follow-a-daisy-through-all-five-blocks">3.3 Follow a daisy through all five blocks<a class="anchor-link" href="#3.3-Follow-a-daisy-through-all-five-blocks">¶</a></h3><p>We pass the same image through the loaded model and copy maps after each ReLU, before pooling. <br/>Their spatial sizes are 64, 32, 16, 8 and 4 pixels per side; channel counts are 16, 32, 64, 128 and 256. <br/>A check confirms that this walkthrough produces the same scores as the normal forward pass.</p>
+<p>Only the first eight channels per block are displayed, chosen consistently rather than by their apparent interpretability. <br/>Each daisy row has its own scale. A dark map can be a valid response. <br/>For roses and tulips, we compare the same eight last-block channels on one shared scale. <br/>These 4 x 4 maps are coarse responses, not outlines of petals or proof of a channel's meaning.</p>
 </div>
 </div>
 </div>
@@ -10821,9 +10821,9 @@ Daisy, block 5: (1, 256, 4, 4) after ReLU, before pooling
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="3.4-Generate-Grad-CAM-for-the-selected-flowers">3.4 Generate Grad-CAM for the selected flowers<a class="anchor-link" href="#3.4-Generate-Grad-CAM-for-the-selected-flowers">¶</a></h3><p>Grad-CAM combines feature maps using gradients of a chosen class score. We use maps after the final ReLU (<code>features[13]</code>), before the last pooling layer. The original three-block notebook's indices must therefore change.</p>
-<p>For each image, we explain its <strong>true flower class</strong>, named in the plot, and separately report the model's predicted class. We differentiate the raw class score with respect to the maps, average gradients over spatial positions, weight and sum the maps, and retain positive responses. We enlarge the 4 x 4 result to the 64 x 64 input size for display. Each heatmap is scaled independently to 0-1, so its colours are relative, not probabilities or comparable absolute importance across images.</p>
-<p><code>eval()</code> selects evaluation behaviour but still allows gradients. We track the input, keep model parameters frozen, and never call an optimiser. An all-zero map would be reported rather than replaced by a more attractive example. Grad-CAM is a coarse diagnostic; it cannot establish that the network understands flowers or identify a precise causal explanation.</p>
+<h3 id="3.4-Generate-Grad-CAM-for-the-selected-flowers">3.4 Generate Grad-CAM for the selected flowers<a class="anchor-link" href="#3.4-Generate-Grad-CAM-for-the-selected-flowers">¶</a></h3><p>Grad-CAM combines feature maps using gradients of a chosen class score. <br/>We use maps after the final ReLU (<code>features[13]</code>), before the last pooling layer. The original three-block notebook's indices must therefore change.</p>
+<p>For each image, we explain its <strong>true flower class</strong>, named in the plot, and separately report the model's predicted class. <br/>We differentiate the raw class score with respect to the maps, average gradients over spatial positions, weight and sum the maps, and retain positive responses. <br/>We enlarge the 4 x 4 result to the 64 x 64 input size for display. <br/>Each heatmap is scaled independently to 0-1, so its colours are relative, not probabilities or comparable absolute importance across images.</p>
+<p><code>eval()</code> selects evaluation behaviour but still allows gradients. <br/>We track the input, keep model parameters frozen, and never call an optimiser. An all-zero map would be reported rather than replaced by a more attractive example. Grad-CAM is a coarse diagnostic, because it cannot establish that the network understands flowers or identify a precise causal explanation.</p>
 </div>
 </div>
 </div>
@@ -10924,7 +10924,7 @@ tulips: explaining tulips; positive Grad-CAM response: True
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="3.5-What-the-visualisations-show">3.5 What the visualisations show<a class="anchor-link" href="#3.5-What-the-visualisations-show">¶</a></h3><p>The early daisy maps retain recognisable edges and regions around the yellow centre and white petals. Later maps have less spatial detail: the fifth block has 256 channels, each only 4 x 4 before pooling. Increasing channels does not preserve pixel resolution. The rose and tulip plots use the same eight channels and a shared scale; their different responses show how the same learned filters respond to different inputs. A dark channel for these images does not establish that it is inactive for every image.</p>
+<h3 id="3.5-What-the-visualisations-show">3.5 What the visualisations show<a class="anchor-link" href="#3.5-What-the-visualisations-show">¶</a></h3><p>The early daisy maps retain recognisable edges and regions around the yellow centre and white petals. <br/>Later maps have less spatial detail: the fifth block has 256 channels, each only 4 x 4 before pooling. <br/>Increasing channels does not preserve pixel resolution. <br/>The rose and tulip plots use the same eight channels and a shared scale, because their different responses show how the same learned filters respond to different inputs. <br/>A dark channel for these images does not establish that it is inactive for every image.</p>
 <table>
 <thead>
 <tr>
@@ -10936,23 +10936,37 @@ tulips: explaining tulips; positive Grad-CAM response: True
 <tbody>
 <tr>
 <td>Daisy</td>
-<td>Daisy (74.7% model score)</td>
-<td>The strongest region overlaps the yellow centre and nearby petal bases. This is consistent with attention to the flower.</td>
+<td>Daisy <br/>(74.7% model score)</td>
+<td>The strongest region overlaps the yellow centre and nearby petal bases. <br/>This is consistent with attention to the flower.</td>
 </tr>
 <tr>
 <td>Roses</td>
-<td>Tulips (52.8% model score)</td>
-<td>The <strong>roses-class</strong> map emphasises a broad upper region containing red blooms. It does not explain the winning tulips score, and flower overlap did not guarantee correct classification.</td>
+<td>Tulips <br/>(52.8% model score)</td>
+<td>The <strong>roses-class</strong> map emphasises a broad upper region containing red blooms. <br/>It does not explain the winning tulips score, and flower overlap did not guarantee correct classification.</td>
 </tr>
 <tr>
 <td>Tulips</td>
-<td>Tulips (54.3% model score)</td>
-<td>The strongest region lies towards the lower left and centre, overlapping flowers and foliage. This is mixed evidence; the plot does not clearly isolate distinctive flower parts.</td>
+<td>Tulips <br/>(54.3% model score)</td>
+<td>The strongest region lies towards the lower left and centre, overlapping flowers and foliage. <br/>This is mixed evidence; the plot does not clearly isolate distinctive flower parts.</td>
 </tr>
 </tbody>
 </table>
-<p>These are qualitative observations from three fixed validation examples, not a localisation benchmark. The original heatmaps contain only 16 spatial values. Smooth enlargement makes them easier to overlay but adds no spatial evidence. Their colours show relative positive contributions to the chosen class score, not the probability that a pixel belongs to a flower. We retained the incorrect rose prediction and did not select replacement images or tune the model from these plots.</p>
-<p><strong>Completion check:</strong> Problem 3 loads the model selected in Problem 2, shows learned filter weights, follows a daisy through all five blocks, compares last-block maps for roses and tulips, and creates and interprets Grad-CAM for both additional flower types (and the daisy). The forward-pass checks passed and every saved model parameter remained unchanged. No retraining was needed. Plots and image-level results are saved in <code>outputs/problem3/</code>.</p>
+<p>These are qualitative observations from three fixed validation examples, not a localisation benchmark. <br/>The original heatmaps contain only 16 spatial values. Smooth enlargement makes them easier to overlay but adds no spatial evidence. <br/>Their colours show relative positive contributions to the chosen class score, not the probability that a pixel belongs to a flower. <br/>We retained the incorrect rose prediction and did not select replacement images or tune the model from these plots.</p>
+<p><strong>Completion check:</strong> <br/>Problem 3 loads the model selected in Problem 2, shows learned filter weights, follows a daisy through all five blocks, compares last-block maps for roses and tulips, and creates and interprets Grad-CAM for both additional flower types (and the daisy). <br/>The forward-pass checks passed and every saved model parameter remained unchanged. <br/>No retraining was needed. <br/>Plots and image-level results are saved in <code>outputs/problem3/</code>.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=1639d7f6-3e1f-44c2-8d42-b635def86c60">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
