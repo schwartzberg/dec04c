@@ -1,0 +1,38 @@
+{
+  "daisy": {
+    "image": "daisy/10140303196_b88d3d6cec.jpg",
+    "true_class": "daisy",
+    "predicted_class": "daisy",
+    "model_score": 0.7472681403160095,
+    "explained_class": "daisy",
+    "coarse_shape": [
+      4,
+      4
+    ],
+    "positive_response": true
+  },
+  "roses": {
+    "image": "roses/10503217854_e66a804309.jpg",
+    "true_class": "roses",
+    "predicted_class": "tulips",
+    "model_score": 0.528102695941925,
+    "explained_class": "roses",
+    "coarse_shape": [
+      4,
+      4
+    ],
+    "positive_response": true
+  },
+  "tulips": {
+    "image": "tulips/107693873_86021ac4ea_n.jpg",
+    "true_class": "tulips",
+    "predicted_class": "tulips",
+    "model_score": 0.5426317453384399,
+    "explained_class": "tulips",
+    "coarse_shape": [
+      4,
+      4
+    ],
+    "positive_response": true
+  }
+}

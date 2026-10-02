@@ -4,11 +4,11 @@ Paul Schwartzberg
 
 ## Status
 
-- Problem 1: MNIST training and evaluation complete (98.26% test accuracy). Sections 1.8-1.9 load five Paint PNGs and create an inference report; the personal drawings and results remain to be added.
+- Problem 1: complete. MNIST test accuracy is 98.26%. Four of five personal Paint digits were recognised; the handwritten 7 was predicted as 3. Original drawings, predictions and discussion are saved.
 - Problem 2: complete. The notebook contains the baseline, deeper model, four controlled trials, selection by validation loss, final test evaluation and conclusions.
-- Problem 3: not yet implemented. The selected flower checkpoint is ready for it.
+- Problem 3: complete. The selected checkpoint supplies filter weights, daisy maps through five blocks, rose and tulip last-block maps, and Grad-CAM overlays with discussion. No model weights changed.
 
-Use `e89-Schwartzberg-Paul-HW04.ipynb` with the `cscie89` kernel. The HTML file is a readable snapshot of the current notebook; the whole assignment is not yet complete.
+Use `e89-Schwartzberg-Paul-HW04.ipynb` with the `cscie89` kernel. The HTML file is a readable snapshot of the current notebook; all three problems have saved results and conclusions.
 
 ## Problem 2 results
 
@@ -28,6 +28,9 @@ Script alternatives, run from this folder:
 6. `06_train_deeper_flowers.py`: run the deeper model under the baseline settings.
 7. `07_flower_experiments.py`: run four additional trials and select by validation loss.
 8. `08_evaluate_selected_flowers.py`: evaluate the fixed selected checkpoint on test images. Do not tune from these results.
+9. `09_train_mnist.py`: reproduce MNIST training.
+10. `10_handwriting_report.py`: run inference on the five saved Paint images.
+11. `11_visualise_flowers.py`: reproduce Problem 3 from the saved flower checkpoint and split, without training.
 
 `flower_variants.py` reconstructs each variant from its saved configuration. The notebook also includes those definitions, so it contains the solution code in one place.
 
@@ -44,3 +47,7 @@ Save five black-on-white digit PNGs in `handwriting/`: `digit_0.png`, `digit_2.p
 The original PNGs remain unchanged. The static plot and inference report are saved under `outputs/mnist/`. The notebook no longer uses a drawing widget or requires anywidget.
 
 `09_train_mnist.py` reproduces training. `mnist_model.py` defines the CNN; `handwriting_helpers.py` provides preprocessing and inference. `10_handwriting_report.py` regenerates the Paint-image report. The checkpoint is `outputs/mnist/mnist_cnn.pth`.
+
+## Problem 3 results
+
+Plots and image-level results are saved under `outputs/problem3/`. The fixed examples are the first sorted validation paths for daisy, roses and tulips. The daisy and tulip are classified correctly; the rose is predicted as tulips. Grad-CAM explains the true class, stated on each plot. The notebook discusses flower/background overlap and the limitations of enlarging 4 x 4 heatmaps.
