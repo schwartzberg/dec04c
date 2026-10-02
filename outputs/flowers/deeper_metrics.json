@@ -11,7 +11,7 @@
   "best_epoch": 13,
   "selected_validation_loss": 0.9057857418060302,
   "selected_validation_accuracy": 0.6472727272727272,
-  "training_seconds": 101.3809762999881,
+  "training_seconds": 136.4255051999935,
   "history": {
     "train_loss": [
       1.5545044006100421,
