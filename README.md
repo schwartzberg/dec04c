@@ -4,7 +4,7 @@ Paul Schwartzberg
 
 ## Status
 
-- Problem 1: MNIST loading and inspection complete. Model training and personal handwriting inference remain.
+- Problem 1: MNIST training and evaluation complete (98.26% test accuracy). Sections 1.8-1.10 provide a drawing widget and inference report; the user still needs to draw and save three examples.
 - Problem 2: complete. The notebook contains the baseline, deeper model, four controlled trials, selection by validation loss, final test evaluation and conclusions.
 - Problem 3: not yet implemented. The selected flower checkpoint is ready for it.
 
@@ -36,3 +36,9 @@ Script alternatives, run from this folder:
 `outputs/flowers/selected_flower_cnn.pth` is the checkpoint for Problem 3. It includes weights, configuration, class names and image size. `model_selection.json` records the selection rule. `split_manifest.json` records exact image assignments. Individual checkpoints, histories, comparison plots and final test metrics are also saved under `outputs/flowers/`.
 
 Downloaded datasets are kept in `data/`, which Git ignores. Required packages include PyTorch, torchvision, NumPy, matplotlib, scikit-learn, Pillow and Jupyter.
+
+## Personal handwriting in Jupyter
+
+The drawing box uses `anywidget` (installed in the `cscie89` environment; on another computer use `%pip install anywidget`). Reopen the notebook from disk after external edits. Run Sections 1.8 and 1.9, select the intended digit, draw it, and click **Save and predict**. Repeat for three digits, then run Section 1.10 and press Ctrl+S. Original PNGs and labels are saved in `handwriting/`; the static report is saved under `outputs/mnist/`. Keep misclassifications. These examples are inference only.
+
+`09_train_mnist.py` reproduces MNIST training. `mnist_model.py` defines its CNN. `handwriting_helpers.py` provides preprocessing and inference; `10_handwriting_report.py` regenerates a report from saved drawings. The full drawing and reporting code is also in the notebook. The MNIST checkpoint is `outputs/mnist/mnist_cnn.pth`.
