@@ -19,3 +19,5 @@ The assignment calls for one notebook covering all three problems and an HTML ex
 ## Problem 2
 
 The notebook now loads and previews the Flower Photos dataset. `02_load_flowers.py` contains the same code for this step. The first run downloads about 220 MB. Baseline training and experiments remain to be done.
+
+The next cells create a fixed, stratified 70%/15%/15% split and batches of 64 images. `03_flower_data_loaders.py` contains this step as a script. Run it after downloading the photos.
