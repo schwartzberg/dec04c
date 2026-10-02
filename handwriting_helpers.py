@@ -1,8 +1,6 @@
 """Preprocess personal digit images and load the saved MNIST model for inference."""
 # This section can run on its own: it loads the trained checkpoint from disk.
 from pathlib import Path
-import base64
-import io
 import json
 import numpy as np
 import matplotlib.pyplot as plt
@@ -23,7 +21,7 @@ handwriting_model.eval()
 
 def prepare_handwritten_image(source):
     """Convert a black-on-white drawing to a centred, bright 28 x 28 MNIST input."""
-    # Support a file path or an image passed directly by the drawing widget.
+    # Support a file path or a PIL image used for a preprocessing check.
     if isinstance(source, Image.Image):
         image = source.copy()
     else:
@@ -37,7 +35,7 @@ def prepare_handwritten_image(source):
     ink = ImageOps.invert(grey)  # MNIST uses bright strokes on a dark background.
     bounds = ink.point(lambda value: 255 if value > 30 else 0).getbbox()
     if bounds is None:
-        raise ValueError("The canvas is blank. Draw one digit before saving.")
+        raise ValueError("The image is blank. Draw one digit in black on a white background.")
     ink = ink.crop(bounds)
     # Keep the original proportions; fit the digit inside a 20 x 20 area.
     scale = 20 / max(ink.size)

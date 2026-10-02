@@ -4,7 +4,7 @@ Paul Schwartzberg
 
 ## Status
 
-- Problem 1: MNIST training and evaluation complete (98.26% test accuracy). Sections 1.8-1.10 provide a drawing widget and inference report; the user still needs to draw and save three examples.
+- Problem 1: MNIST training and evaluation complete (98.26% test accuracy). Sections 1.8-1.9 load five Paint PNGs and create an inference report; the personal drawings and results remain to be added.
 - Problem 2: complete. The notebook contains the baseline, deeper model, four controlled trials, selection by validation loss, final test evaluation and conclusions.
 - Problem 3: not yet implemented. The selected flower checkpoint is ready for it.
 
@@ -37,8 +37,10 @@ Script alternatives, run from this folder:
 
 Downloaded datasets are kept in `data/`, which Git ignores. Required packages include PyTorch, torchvision, NumPy, matplotlib, scikit-learn, Pillow and Jupyter.
 
-## Personal handwriting in Jupyter
+## Personal handwriting from Paint
 
-The drawing box uses `anywidget` (installed in the `cscie89` environment; on another computer use `%pip install anywidget`). Reopen the notebook from disk after external edits. Run Sections 1.8 and 1.9, select the intended digit, draw it, and click **Save and predict**. Repeat for three digits, then run Section 1.10 and press Ctrl+S. Original PNGs and labels are saved in `handwriting/`; the static report is saved under `outputs/mnist/`. Keep misclassifications. These examples are inference only.
+Save five black-on-white digit PNGs in `handwriting/`: `digit_0.png`, `digit_2.png`, `digit_5.png`, `digit_7.png` and `digit_8.png`. Use one digit per image, a roughly 280 x 280 canvas, thick strokes and a clear margin. Then run Sections 1.8 and 1.9 and save the notebook with Ctrl+S. The code handles resizing and colour inversion. Keep incorrect predictions.
 
-`09_train_mnist.py` reproduces MNIST training. `mnist_model.py` defines its CNN. `handwriting_helpers.py` provides preprocessing and inference; `10_handwriting_report.py` regenerates a report from saved drawings. The full drawing and reporting code is also in the notebook. The MNIST checkpoint is `outputs/mnist/mnist_cnn.pth`.
+The original PNGs remain unchanged. The static plot and inference report are saved under `outputs/mnist/`. The notebook no longer uses a drawing widget or requires anywidget.
+
+`09_train_mnist.py` reproduces training. `mnist_model.py` defines the CNN; `handwriting_helpers.py` provides preprocessing and inference. `10_handwriting_report.py` regenerates the Paint-image report. The checkpoint is `outputs/mnist/mnist_cnn.pth`.
