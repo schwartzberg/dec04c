@@ -26,4 +26,6 @@ The new baseline cells (2.5-2.7) train for 15 epochs with Adam and a learning ra
 
 `04_train_flower_baseline.py` runs the same baseline outside Jupyter and reuses `03_flower_data_loaders.py`. Run it from this folder after downloading the photos. To repeat training in the notebook, rerun Section 2.5 first to reset the weights and optimiser, then run Sections 2.6 and 2.7.
 
-Sections 2.8-2.10 explain the baseline curves and define the required five-block, three-linear-layer model. `05_deeper_flower_model.py` provides the same model class. Shape and layer-count checks have passed; training this deeper model is the next step.
+Sections 2.8-2.10 explain the baseline curves and define the required five-block, three-linear-layer model. `05_deeper_flower_model.py` provides the same model class. Shape and layer-count checks have passed. Sections 2.11-2.12 train this deeper model under the baseline settings and compare validation results. The test set remains reserved for final evaluation.
+
+`06_train_deeper_flowers.py` runs the same deeper-model experiment after the baseline outputs have been saved. It verifies the settings and exact split, resets the weights and batch order, and saves a separate checkpoint, metrics and comparison plot. To repeat this experiment in Jupyter, rerun the setup and training cells in Section 2.11, then Section 2.12.
