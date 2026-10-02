@@ -15,3 +15,7 @@ Open the notebook and run its cells in order. The first run downloads MNIST into
 `01_load_mnist.py` contains the same code as this first step. Run it from this folder with `python 01_load_mnist.py`.
 
 The assignment calls for one notebook covering all three problems and an HTML export. We will extend this notebook as we proceed.
+
+## Problem 2
+
+The notebook now loads and previews the Flower Photos dataset. `02_load_flowers.py` contains the same code for this step. The first run downloads about 220 MB. Baseline training and experiments remain to be done.
